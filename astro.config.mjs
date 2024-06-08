@@ -4,7 +4,6 @@ import starlight from "@astrojs/starlight";
 // https://astro.build/config
 export default defineConfig({
   site: "https://starlight.hisam.dev",
-  base: "template-starlight",
   integrations: [
     starlight({
       title: "Hisam's Starlight",
