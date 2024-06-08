@@ -6,6 +6,8 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Hisam's Starlight",
+      site: "https://starlight.hisam.dev",
+      base: "template-starlight",
       social: {
         github: "https://github.com/hisamafahri/template-starlight",
       },
