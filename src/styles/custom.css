@@ -1,0 +1,20 @@
+:root {
+  /* --sl-nav-height: undefined; */
+}
+
+#starlight__on-this-page--mobile {
+  border-top: 1px solid var(--sl-color-hairline-shade);
+  margin-top: calc(var(--sl-nav-height) + 0.5rem);
+}
+
+@media (min-width: 800px) and (max-width: 1150px) {
+  #starlight__on-this-page--mobile {
+    margin-top: calc(var(--sl-nav-height) - 0.5rem);
+  }
+}
+
+@media (max-width: 1150px) {
+  .main-pane {
+    margin-top: calc(var(--sl-nav-height) - 0.5rem);
+  }
+}

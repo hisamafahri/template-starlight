@@ -1,0 +1,17 @@
+---
+import type { Props } from "@astrojs/starlight/props";
+
+import MobileMenuFooter from "@astrojs/starlight/components/MobileMenuFooter.astro";
+import SidebarSublist from "@astrojs/starlight/components/SidebarSublist.astro";
+import { filterEntries, getRootPath } from "../lib/utils";
+
+const currentPath = Astro.url.pathname;
+const { sidebar } = Astro.props;
+const filteredSidebar =
+  filterEntries(sidebar, getRootPath(currentPath))?.[0].entries || [];
+---
+
+<SidebarSublist sublist={filteredSidebar} />
+<div class="md:sl-hidden">
+  <MobileMenuFooter {...Astro.props} />
+</div>

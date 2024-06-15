@@ -1,0 +1,112 @@
+---
+import type { Props } from "@astrojs/starlight/props";
+import LanguageSelect from "@astrojs/starlight/components/LanguageSelect.astro";
+import Search from "@astrojs/starlight/components/Search.astro";
+import SiteTitle from "@astrojs/starlight/components/SiteTitle.astro";
+import SocialIcons from "@astrojs/starlight/components/SocialIcons.astro";
+import ThemeSelect from "@astrojs/starlight/components/ThemeSelect.astro";
+import NavBarLink from "./NavBarLink.astro";
+
+import groupSidebar from "../../sidebar.json";
+---
+
+<div {...Astro.props}>
+  <div class="header sl-flex">
+    <div class="title-wrapper sl-flex">
+      <SiteTitle {...Astro.props} />
+    </div>
+    <div class="middle-group sl-flex">
+      <Search {...Astro.props} />
+      <div class="sl-flex categories">
+        {
+          groupSidebar.map((item) => (
+            // TODO: active path
+            <NavBarLink {...Astro.props} href={item.href}>
+              {item.title}
+            </NavBarLink>
+          ))
+        }
+      </div>
+    </div>
+    <div class="sl-hidden md:sl-flex right-group">
+      <div class="sl-flex social-icons">
+        <SocialIcons {...Astro.props} />
+      </div>
+      <ThemeSelect {...Astro.props} />
+      <LanguageSelect {...Astro.props} />
+    </div>
+  </div>
+  <div class="header sl-flex">
+    <div class="sl-flex mobile-categories">
+      {
+        groupSidebar.map((item) => (
+          <NavBarLink {...Astro.props} href={item.href}>
+            {item.title}
+          </NavBarLink>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .header {
+    gap: var(--sl-nav-gap);
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  .middle-group {
+    flex: 1;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .categories {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .mobile-categories {
+    padding-top: calc(var(--sl-nav-gap));
+    width: 100%;
+  }
+
+  .title-wrapper {
+    /* Prevent long titles overflowing and covering the search and menu buttons on narrow viewports. */
+    overflow: hidden;
+  }
+
+  .right-group,
+  .social-icons {
+    gap: 1rem;
+    align-items: center;
+  }
+  .social-icons::after {
+    content: "";
+    height: 2rem;
+    border-inline-end: 1px solid var(--sl-color-gray-5);
+  }
+
+  @media (max-width: 72rem) {
+    .categories {
+      display: none;
+    }
+    .mobile-categories {
+      margin-left: -0.5rem;
+    }
+  }
+  @media (min-width: 72rem) {
+    .mobile-categories {
+      display: none;
+    }
+  }
+
+  @media (min-width: 800px) and (max-width: 1150px) {
+    .mobile-categories {
+      margin-left: calc(var(--sl-sidebar-width) - 1rem);
+    }
+  }
+</style>

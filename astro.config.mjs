@@ -10,19 +10,11 @@ export default defineConfig({
       social: {
         github: "https://github.com/hisamafahri/template-starlight",
       },
-      sidebar: [
-        {
-          label: "Guides",
-          items: [
-            // Each item here is one entry in the navigation menu.
-            { label: "Example Guide", link: "/guides/example/" },
-          ],
-        },
-        {
-          label: "Reference",
-          autogenerate: { directory: "reference" },
-        },
-      ],
+      components: {
+        Header: "./src/components/Header.astro",
+        Sidebar: "./src/components/Sidebar.astro",
+      },
+      customCss: ["./src/styles/custom.css"],
     }),
   ],
 });
