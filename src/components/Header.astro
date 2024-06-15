@@ -20,7 +20,6 @@ import groupSidebar from "../../sidebar.json";
       <div class="sl-flex categories">
         {
           groupSidebar.map((item) => (
-            // TODO: active path
             <NavBarLink {...Astro.props} href={item.href}>
               {item.title}
             </NavBarLink>
@@ -36,16 +35,14 @@ import groupSidebar from "../../sidebar.json";
       <LanguageSelect {...Astro.props} />
     </div>
   </div>
-  <div class="header sl-flex">
-    <div class="sl-flex mobile-categories">
-      {
-        groupSidebar.map((item) => (
-          <NavBarLink {...Astro.props} href={item.href}>
-            {item.title}
-          </NavBarLink>
-        ))
-      }
-    </div>
+  <div class="sl-flex mobile-categories">
+    {
+      groupSidebar.map((item) => (
+        <NavBarLink {...Astro.props} href={item.href}>
+          {item.title}
+        </NavBarLink>
+      ))
+    }
   </div>
 </div>
 
@@ -67,11 +64,15 @@ import groupSidebar from "../../sidebar.json";
   .categories {
     margin-left: 2rem;
     margin-right: 2rem;
+    gap: 4px;
+    overflow-x: scroll;
   }
 
   .mobile-categories {
     padding-top: calc(var(--sl-nav-gap));
     width: 100%;
+    gap: 4px;
+    overflow-x: scroll;
   }
 
   .title-wrapper {

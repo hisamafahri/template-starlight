@@ -1,11 +1,24 @@
-<a {...Astro.props}>
+---
+import { getRootPath } from "../lib/utils";
+const currentRootPath = getRootPath(Astro.url.pathname);
+const { href } = Astro.props;
+const isActive = href === currentRootPath;
+---
+
+<a
+  {...Astro.props}
+  style={{
+    color: isActive ? "var(--sl-color-text-accent)" : "",
+    backgroundColor: isActive ? "var(--sl-color-gray-6)" : "",
+  }}
+>
   <slot />
 </a>
 
 <style>
   a {
     background-color: var(--sl-color-primary-500);
-    color: var(--sl-color-white);
+    color: var(--sl-color-text);
     border: none;
     font-weight: 500;
     text-align: center;
@@ -20,5 +33,6 @@
 
   a:hover {
     color: var(--sl-color-text-accent);
+    background-color: var(--sl-color-gray-6);
   }
 </style>
