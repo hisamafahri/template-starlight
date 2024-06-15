@@ -10,6 +10,10 @@ export default defineConfig({
       social: {
         github: "https://github.com/hisamafahri/template-starlight",
       },
+      components: {
+        Header: "./src/components/Header.astro",
+      },
+      customCss: ["./src/styles/custom.css"],
       sidebar: [
         {
           label: "Guides",
