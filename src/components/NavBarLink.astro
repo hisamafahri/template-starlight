@@ -1,9 +1,9 @@
-<button {...Astro.props}>
+<a {...Astro.props}>
   <slot />
-</button>
+</a>
 
 <style>
-  button {
+  a {
     background-color: var(--sl-color-primary-500);
     color: var(--sl-color-white);
     border: none;
@@ -18,7 +18,7 @@
     padding: 0.5rem 1rem;
   }
 
-  button:hover {
+  a:hover {
     color: var(--sl-color-text-accent);
   }
 </style>

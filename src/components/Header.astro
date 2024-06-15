@@ -5,7 +5,9 @@ import Search from "@astrojs/starlight/components/Search.astro";
 import SiteTitle from "@astrojs/starlight/components/SiteTitle.astro";
 import SocialIcons from "@astrojs/starlight/components/SocialIcons.astro";
 import ThemeSelect from "@astrojs/starlight/components/ThemeSelect.astro";
-import Button from "./Button.astro";
+import NavBarLink from "./NavBarLink.astro";
+
+import groupSidebar from "../../sidebar.json";
 ---
 
 <div {...Astro.props}>
@@ -16,19 +18,14 @@ import Button from "./Button.astro";
     <div class="middle-group sl-flex">
       <Search {...Astro.props} />
       <div class="sl-flex categories">
-        <!-- TODO: read from configs -->
-        <Button {...Astro.props}>
-          Tutorials
-        </Button>
-        <Button {...Astro.props}>
-          How-to guides
-        </Button>
-        <Button {...Astro.props}>
-          References
-        </Button>
-        <Button {...Astro.props}>
-          Explanations
-        </Button>
+        {
+          groupSidebar.map((item) => (
+            // TODO: active path
+            <NavBarLink {...Astro.props} href={item.href}>
+              {item.title}
+            </NavBarLink>
+          ))
+        }
       </div>
     </div>
     <div class="sl-hidden md:sl-flex right-group">
@@ -41,19 +38,13 @@ import Button from "./Button.astro";
   </div>
   <div class="header sl-flex">
     <div class="sl-flex mobile-categories">
-       <!-- TODO: read from configs -->
-      <Button {...Astro.props}>
-        Tutorials
-      </Button>
-      <Button {...Astro.props}>
-        How-to guides
-      </Button>
-      <Button {...Astro.props}>
-        References
-      </Button>
-      <Button {...Astro.props}>
-        Explanations
-      </Button>
+      {
+        groupSidebar.map((item) => (
+          <NavBarLink {...Astro.props} href={item.href}>
+            {item.title}
+          </NavBarLink>
+        ))
+      }
     </div>
   </div>
 </div>
