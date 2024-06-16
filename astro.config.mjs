@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import sidebar from "./sidebar.json";
 
 // https://astro.build/config
 export default defineConfig({
@@ -7,6 +8,11 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Hisam's Starlight",
+      logo: {
+        light: "./src/assets/logo-light.svg",
+        dark: "./src/assets/logo-dark.svg",
+        replacesTitle: true,
+      },
       social: {
         github: "https://github.com/hisamafahri/template-starlight",
       },
@@ -15,6 +21,7 @@ export default defineConfig({
         Sidebar: "./src/components/Sidebar.astro",
       },
       customCss: ["./src/styles/custom.css"],
+      sidebar,
     }),
   ],
 });
