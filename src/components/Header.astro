@@ -8,6 +8,7 @@ import ThemeSelect from "@astrojs/starlight/components/ThemeSelect.astro";
 import NavBarLink from "./NavBarLink.astro";
 
 import navbar from "../../navbar.json";
+const isHomepage = Astro.props.slug === "";
 ---
 
 <div {...Astro.props}>
@@ -35,15 +36,17 @@ import navbar from "../../navbar.json";
       <LanguageSelect {...Astro.props} />
     </div>
   </div>
-  <div class="sl-flex mobile-categories">
-    {
-      navbar.map((item) => (
-        <NavBarLink {...Astro.props} href={item.href}>
-          {item.title}
-        </NavBarLink>
-      ))
-    }
-  </div>
+  {
+    !isHomepage && (
+      <div class="sl-flex mobile-categories">
+        {navbar.map((item) => (
+          <NavBarLink {...Astro.props} href={item.href}>
+            {item.title}
+          </NavBarLink>
+        ))}
+      </div>
+    )
+  }
 </div>
 
 <style>
